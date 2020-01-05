@@ -11,7 +11,7 @@ var cheerio = require("cheerio");
 
 // Require models
 
-var db = require("./models");
+// var db = require("./models");
 var port = 3000;
 
 
@@ -43,9 +43,14 @@ app.set("view engine", "handlebars");
 
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb:/;localhost/mongoHeadlines";
-mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
-
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log("Successfully Connected to Mongoose!");
+});
 
 // Start the server
 app.listen(port, function(){
