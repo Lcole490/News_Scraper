@@ -1,0 +1,19 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Welcome to Scrape-Span</h1>
+    <p class="lead">To access more articles, click "Scrape" in the navigation bar!</p>
+  </div>
+</div>
+
+
+{{#each article}}
+<div class="card">
+  <h5 class="card-header">Featured</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="/readArticle/{{this._id}}" class="btn btn-primary">Read Article</a>
+  </div>
+</div>
+
+{{/each}}
